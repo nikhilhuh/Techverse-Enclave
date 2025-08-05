@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  /* Dark Theme (Default) */
+  --background: rgb(5, 6, 10);
+  --foreground: rgb(250, 250, 250);
+
+  /* Neon Palette */
+  --neon-purple: rgb(146, 82, 255);
+  --neon-cyan: rgb(0, 255, 255);
+  --neon-blue: rgb(66, 135, 245);
+  --neon-green: rgb(47, 208, 85);
+  --neon-pink: rgb(255, 105, 180);
+  --neon-yellow: rgb(255, 255, 0);
+
+  /* Electric Variants */
+  --electric-blue: rgb(0, 123, 255);
+  --electric-purple: rgb(170, 0, 255);
+  --electric-cyan: rgb(0, 255, 204);
+  --electric-yellow: rgb(255, 200, 50);
+
+  /* Tech Backgrounds */
+  --tech-dark: rgb(5, 6, 10);
+  --tech-darker: rgb(2, 2, 5);
+  --tech-light: rgb(56, 56, 66);
+
+  /* Fonts */
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  /* Glass mode for dark theme */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-card-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-card-border: rgba(255, 255, 255, 0.05);
+}
+
+.light {
+  /* Light Theme Overrides */
+  --background: rgb(250, 250, 250);
+  --foreground: rgb(10, 10, 10);
+
+  /* Glass mode for light theme */
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-card-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-card-border: rgba(0, 0, 0, 0.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[var(--background)] text-[var(--foreground)];
+  font-family: var(--font-space-grotesk);
+}
+.orbitron {
+  font-family: var(--font-orbitron);
+}
+
+/* Neon glow effects */
+.neon-glow-purple {
+  box-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple),
+    0 0 15px var(--neon-purple);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan),
+    0 0 15px var(--neon-cyan);
+}
+
+.neon-glow-blue {
+  box-shadow: 0 0 5px var(--electric-blue), 0 0 10px var(--electric-blue),
+    0 0 15px var(--electric-blue);
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-card-border);
+}
+
+/* Animated gradient backgrounds */
+.gradient-purple-cyan {
+  background: linear-gradient(
+    135deg,
+    var(--neon-purple) 0%,
+    var(--neon-cyan) 100%
+  );
+}
+
+.gradient-blue-purple {
+  background: linear-gradient(
+    135deg,
+    var(--electric-blue) 0%,
+    var(--electric-purple) 100%
+  );
+}
+
+/* Text glow effects */
+.text-glow-purple {
+  text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple),
+    0 0 30px var(--neon-purple);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan),
+    0 0 30px var(--neon-cyan);
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 10px var(--electric-blue), 0 0 20px var(--electric-blue),
+    0 0 30px var(--electric-blue);
+}
+
+/* Hover glow animations */
+.hover-glow-purple {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-purple:hover {
+  box-shadow: 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple),
+    0 0 40px var(--neon-purple);
+  transform: translateY(-2px);
+}
+
+.hover-glow-cyan {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-cyan:hover {
+  box-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan),
+    0 0 40px var(--neon-cyan);
+  transform: translateY(-2px);
+}
+
+.hover-glow-blue {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-blue:hover {
+  box-shadow: 0 0 20px var(--electric-blue), 0 0 30px var(--electric-blue),
+    0 0 40px var(--electric-blue);
+  transform: translateY(-2px);
+}
+
+.hover-glow-green {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-green:hover {
+  box-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-green),
+    0 0 40px var(--neon-green);
+  transform: translateY(-2px);
+}
+
+/* Container for each scroll row */
+.scroll-row {
+  overflow-x: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Track holds the repeated items */
+.scroll-track {
+  display: inline-flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  gap: 2.5rem;
+}
+
+/* Individual item styling */
+.testimonial-item {
+  flex: 0 0 auto;
+}
+
+/* Left Scroll Animation (Right to Left) */
+.scroll-left .scroll-track {
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Right Scroll Animation (Left to Right) */
+.scroll-right .scroll-track {
+  animation-name: scrollRight;
+  animation-duration: 30s;
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Pause on Hover */
+.scroll-left:hover .scroll-track,
+.scroll-right:hover .scroll-track {
+  animation-play-state: paused;
+}
