@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import NewPost from "../components/Posts/NewPost";
-import EachPost from "../components/Posts/EachPost";
+import NewPost from "../../components/Community/Feed/NewPost";
+import FeedPost from "../../components/Community/Feed/FeedPost";
 import { ArrowUp } from "lucide-react";
-import CreatePostModal from "../components/Modals/CreatePostModal";
-import { Post } from "../utils/constants";
-import UploadPlaceholder from "../components/Posts/UploadingPlaceholder";
-import DetailedPost from "../components/Posts/DetailedPost";
+import CreatePostModal from "../../components/Modals/CreatePostModal";
+import { Post } from "../../utils/constants";
+import UploadPlaceholder from "../../components/Miscellaneous/UploadingPlaceholder";
 
 const mockPosts: Post[] = [
   {
@@ -102,7 +101,7 @@ if (!localStorage.getItem("posts")) {
   localStorage.setItem("posts", JSON.stringify(mockPosts));
 }
 
-const Community: React.FC = () => {
+const Feed: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>(
     JSON.parse(localStorage.getItem("posts") || "[]").length > 0
       ? JSON.parse(localStorage.getItem("posts") || "[]")
@@ -111,10 +110,6 @@ const Community: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const [uploading, setUploading] = React.useState<boolean>(false);
-  const [selectedPostId, setSelectedPostId] = React.useState<string | null>(
-    null
-  );
-  const [selectedPost, setSelectedPost] = React.useState<Post | null>(null);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,18 +125,8 @@ const Community: React.FC = () => {
     localStorage.setItem("posts", JSON.stringify(posts));
   }, [posts]);
 
-  React.useEffect(() => {
-    if (selectedPostId) {
-      // Simulated API call
-      setTimeout(() => {
-        const found = posts.find((p) => p.id === selectedPostId);
-        setSelectedPost(found || null);
-      }, 2000);
-    }
-  }, [selectedPostId]);
-
   return (
-    <div className="pt-[10dvh] pb-[15dvh] max-w-7xl mx-auto space-y-6 px-4 py-2">
+    <div className="pt-[10dvh] pb-[15dvh] max-w-7xl mx-auto space-y-2 md:space-y-6 lg:space-y-5 md:px-4 py-2">
       {/* Post creation popup */}
       {showModal && (
         <CreatePostModal
@@ -150,41 +135,31 @@ const Community: React.FC = () => {
           setUploading={setUploading}
         />
       )}
-      {selectedPostId ? (
-        <DetailedPost
-          selectedPost={selectedPost}
-          onClose={() => setSelectedPost(null)}
-        />
-      ) : (
-        <>
-          <NewPost setShowModal={setShowModal} />
+      <NewPost setShowModal={setShowModal} />
 
-          {/* Posts Feed */}
-          <div className="space-y-6">
-            {uploading && <UploadPlaceholder />}
-            {posts.map((post) => (
-              <EachPost
-                key={post.id}
-                post={post}
-                setSelectedPostId={setSelectedPostId}
-              />
-            ))}
-          </div>
+      {/* Posts Feed */}
+      <div className="space-y-2 md:space-y-6 lg:space-y-5">
+        {uploading && <UploadPlaceholder />}
+        {posts.map((post) => (
+          <FeedPost
+            key={post.id}
+            post={post}
+          />
+        ))}
+      </div>
 
-          {/* Scroll to top */}
-          <button
-            onClick={() => window.scrollTo(0, 0)}
-            title="Scroll to top"
-            className={`${
-              isScrolled ? "fixed" : "hidden"
-            } bottom-8 right-5 md:bottom-10 md:right-10 hover:cursor-pointer transition-all duration-300 bg-[var(--neon-purple)] p-2 rounded-full text-white shadow-lg`}
-          >
-            <ArrowUp className="h-5 w-5" />
-          </button>
-        </>
-      )}
+      {/* Scroll to top */}
+      <button
+        onClick={() => window.scrollTo(0, 0)}
+        title="Scroll to top"
+        className={`${
+          isScrolled ? "fixed" : "hidden"
+        } bottom-8 right-5 md:bottom-10 md:right-10 hover:cursor-pointer transition-all duration-300 bg-[var(--neon-purple)] p-2 rounded-full text-white shadow-lg`}
+      >
+        <ArrowUp className="h-5 w-5" />
+      </button>
     </div>
   );
 };
 
-export default Community;
+export default Feed;

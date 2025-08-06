@@ -47,10 +47,10 @@ const Navbar: React.FC = () => {
             className="flex items-center space-x-2 group cursor-pointer"
           >
             <div className="relative">
-              <Zap className="h-8 w-8 text-[var(--neon-purple)] group-hover:text-[var(--neon-cyan)] transition-colors duration-300" />
+              <Zap className="h-4 w-4 md:h-6 md:w-6 lg:h-8 lg:w-8 text-[var(--neon-purple)] group-hover:text-[var(--neon-cyan)] transition-colors duration-300" />
               <div className="absolute inset-0 h-8 w-8 bg-[var(--neon-purple)]/40 blur-xl group-hover:bg-[var(--neon-cyan)]/40 transition-colors duration-300"></div>
             </div>
-            <span className={`text-xl lg:text-2xl font-orbitron font-bold ${lightMode? "text-[var(--neon-blue)]" : "text-white"} transition-all duration-300`}>
+            <span className={`text-lg md:text-xl lg:text-2xl font-orbitron font-bold ${lightMode? "text-[var(--neon-blue)]" : "text-white"} transition-all duration-300`}>
               Techverse Enclave
             </span>
           </Link>

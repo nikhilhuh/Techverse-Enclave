@@ -105,8 +105,8 @@ const Testimonials: React.FC = () => {
 
   return (
     <section className="py-20">
-      <div className="mx-auto px-4 md:px-6">
-        <div className="text-center mb-10" data-aos="fade-up">
+      <div className="mx-auto">
+        <div className="text-center mb-10 px-4 md:px-6" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl orbitron font-bold text-[var(--foreground)] mb-4">
             What our{" "}
             <span className={`${lightMode? "text-[var(--electric-yellow)]" : "text-[var(--neon-yellow)]"}`}>Members Say</span>

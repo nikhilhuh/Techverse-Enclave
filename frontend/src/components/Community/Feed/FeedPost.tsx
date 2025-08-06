@@ -1,5 +1,5 @@
 import React from "react";
-import { Post } from "../../utils/constants";
+import { Post } from "../../../utils/constants";
 import {
   Calendar,
   Heart,
@@ -7,19 +7,20 @@ import {
   MoreHorizontal,
   Share2,
 } from "lucide-react";
-import { useTheme } from "../../context/ThemeProvider";
-import LinkifyText from "./LinkifyText";
+import { useTheme } from "../../../context/ThemeProvider";
+import LinkifyText from "../../Miscellaneous/LinkifyText";
+import { useNavigate } from "react-router-dom";
 
-interface EachPostProps {
+interface FeedPostProps {
   post: Post;
-  setSelectedPostId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const EachPost: React.FC<EachPostProps> = ({ post, setSelectedPostId }) => {
+const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
   const { lightMode } = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <div onClick={() => setSelectedPostId(post.id)} className="glass-card border-[var(--foreground)]/10 hover:border-[var(--foreground)]/20 transition-colors rounded-md">
+    <div onClick={() => navigate(`${post.id}`)} className="glass-card border-[var(--foreground)]/10 hover:border-[var(--foreground)]/20 transition-colors md:rounded-md">
       <div className="p-4 md:p-6">
         {/* Post Header */}
         <div className="flex items-start justify-between mb-4">
@@ -66,7 +67,7 @@ const EachPost: React.FC<EachPostProps> = ({ post, setSelectedPostId }) => {
             ) : (
               <video
                 src={post.media.url}
-                className="w-full rounded-lg max-h-96 object-contain"
+                className="w-full rounded-lg max-h-80 object-contain"
                 controls
               />
             )}
@@ -111,4 +112,4 @@ const EachPost: React.FC<EachPostProps> = ({ post, setSelectedPostId }) => {
   );
 };
 
-export default EachPost;
+export default FeedPost;

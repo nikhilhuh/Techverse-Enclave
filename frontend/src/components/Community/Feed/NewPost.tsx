@@ -1,6 +1,6 @@
 import { ImageIcon, Link2, Video } from "lucide-react";
 import React from "react";
-import { useTheme } from "../../context/ThemeProvider";
+import { useTheme } from "../../../context/ThemeProvider";
 
 interface NewPostProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,7 +10,7 @@ const NewPost: React.FC<NewPostProps> = ({ setShowModal }) => {
   const { lightMode } = useTheme();
 
   return (
-    <div className="glass-card border-[var(--foreground)]/20 rounded-lg">
+    <div className="glass-card border-[var(--foreground)]/20 md:rounded-lg">
       <div className="p-4 md:p-6">
         <div className="flex items-center space-x-2 md:space-x-4 mb-4">
           {/* Pfp */}
